@@ -9,7 +9,7 @@ RUN mkdir app
 WORKDIR /app
 
 # TODO: нужно скопировать файлы, которые содержат список зависимостей
-
+COPY pyproject.toml poetry.lock ./
 # устанавливаем зависимости из скопированных файлов
 RUN pip install --no-cache-dir poetry \
   && poetry config virtualenvs.in-project true \
@@ -24,12 +24,14 @@ RUN pip install --no-cache-dir poetry \
 FROM python:3.14-slim-bookworm AS runtime
 
 # TODO: нужно скопировать содержимое папки /app из слоя builder
+COPY --from=builder /app /app
 # в слой runtime в папку /app
 
 
 WORKDIR /app
 
 # TODO: необходимо изменить переменную PATH. Почитайте за что она отвечает.
+ENV PATH="/app/.venv/bin:$PATH"
 # В переменную PATH необходимо вставить в начало путь до python
 # в окружении /app/.venv/
 

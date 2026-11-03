@@ -16,7 +16,6 @@ dependencies = [
 [dependency-groups]
 dev = ["debugpy (>=1.8.22,<2.0.0)"]
 
-
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"

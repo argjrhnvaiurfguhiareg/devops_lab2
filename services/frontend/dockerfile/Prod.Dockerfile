@@ -46,7 +46,7 @@ RUN mkdir /var/www \
   && mkdir /var/www/logs
 
 # TODO: в самую последнюю очередь копируем
-COPY --from=vite-builder /app/dist /usr/share/nginx/htnl
+COPY --from=vite-builder /app/dist /usr/share/nginx/html
 # транспилированный код из папки /app/dist слоя сборки
 # в папку для nginx из слоя выполнения. /ush/share/nginx/html
 
